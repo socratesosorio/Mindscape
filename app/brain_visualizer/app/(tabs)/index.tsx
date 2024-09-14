@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
   container: {
     margin: 'auto',
     width: '100%',
+    backgroundColor: '#D3D3D3',
   },
   title: {
     fontFamily: 'Uber Move Text, sans-serif',
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     textAlign: 'center',
     color: '#000',
-    marginTop: 40,
+    marginTop: 70,
     letterSpacing: 1,
   },
   fileUpload: {
@@ -53,5 +54,6 @@ const styles = StyleSheet.create({
     marginRight: Platform.OS === 'web' ? '43%' : '50%',
     borderRadius: 25,
     border: '2px solid #73AD21',
+    marginBottom: 70,
   },
 });
