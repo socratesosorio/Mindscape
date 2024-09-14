@@ -9,7 +9,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber/native';
 import { useGLTF } from '@react-three/drei/native';
-import modelPath from '../../assets/models/example.glb';
+import modelPath from '../../assets/models/Parrot.glb';
 
 
 function Model(props:any) {

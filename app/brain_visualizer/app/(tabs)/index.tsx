@@ -1,70 +1,80 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { StyleSheet, Platform, ImageBackground } from 'react-native';
 
 export default function HomeScreen() {
+  // function downloadFile(path) {
+  //   return (
+  //     <div>
+  //       <a href={path} download>Click to download</a>
+  //     </div>
+  //   )
+  // }
+  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+    // validate file input
+    const file = event.target.files[0];
+    const isNII = file.name.split('.').pop() == 'nii';
+    if (file && !isNII) {
+      alert('Please upload a .nii file.');
+      event.target.value = '';
+      return;
+    }
+    console.log('yay!')
+    // run model on input and navigate to next page with visualization
+
+    // be able to download file
+    return null;
+  }
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <ImageBackground source={'../../assets/images/brain.jpg'} resizeMode="cover" style={styles.image} >
+      <div style={styles.container}>
+        <h1 style={styles.title}>3D Brain Visualizer</h1>
+        <label htmlFor="file-upload" style={styles.uploadButton} className="file-button">
+          Upload file
+        </label>
+        <input id="file-upload" type="file" style={styles.fileUpload} onChange={handleFileChange}></input>
+    </div>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    margin: 'auto',
+    width: '100%',
+    // border: '3px solid green',
+    // padding: 10,
+    // backgroundColor: '#D3D3D3',
+    // backgroundImage: 'url(../../assets/images/brain.jpg)',
+    // backgroundSize: 'cover',
+    // opacity: 0.5,
+  },
+  title: {
+    fontFamily: 'Uber Move Text, sans-serif',
+    fontSize: 60,
+    fontWeight: '700',
+    textAlign: 'center',
+    color: '#fff',
+    marginTop: 70,
+    letterSpacing: 1,
+  },
+  fileUpload: {
+    display: 'none',
+  },
+  uploadButton: {
+    color: '#fff',
+    display: 'flex',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'center',
+    fontFamily: 'Uber Move Text, sans-serif',
+    fontSize: 25,
+    cursor: 'pointer',
+    marginLeft: Platform.OS === 'web' ? '42%' : '50%',
+    marginRight: Platform.OS === 'web' ? '42%' : '50%',
+    borderRadius: 25,
+    border: '3px solid #fff',
+    marginBottom: 70,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  image: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });
