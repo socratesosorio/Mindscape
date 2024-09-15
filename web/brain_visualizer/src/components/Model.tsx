@@ -32,7 +32,7 @@ function ModelB(props: React.ComponentPropsWithoutRef<"object3D">) {
         <div>
             <Canvas style={{ position: "absolute", inset: 0}}>
                 <ModelB position-x={1} />
-                <Environment preset="sunset" background />
+                <Environment files='background2.hdr' background />
                 <OrbitControls />
             </Canvas>
             <button
