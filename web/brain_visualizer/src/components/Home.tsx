@@ -31,7 +31,7 @@ export default function Home() {
         <div className="image">
             {/* <Back></Back> */}
             <div className="container">
-                <h1 className="title">3D Brain Visualizer</h1>
+                <h1 className="title">MindScape VR</h1>
                 <label htmlFor="file-upload" className="uploadButton">
                     Upload file
                 </label>
