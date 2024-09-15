@@ -2,48 +2,68 @@ import React, { useState, useEffect } from 'react';
 import { Canvas, useLoader } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { PLYLoader } from "three/examples/jsm/loaders/PLYLoader";
+import Visualization from './ModelPLY';
 
 export default function Model(props: any) {
-    const [path, setPath] = useState('');
+    const [path, setPath] = useState('./models/heatmap_tab20c_point_cloud.glb');
+    
+    // Array of pre-set GLB paths
+    const presetPaths = [
+        "./models/example.gltf",
+        "./models/brain.glb",
+        "./models/brain_model.glb",
+        "./models/brain_model2.glb",
+        "./models/brain_2.glb",
+        "./models/pointcloud2.glb",
+        "./models/brain3.glb",
+        "./models/pointcloud3.glb",
+        "./models/brain_heatmap.glb",
+        "./models/heatmap_point_cloud.ply",
+        "./models/heatmap_tab20c_point_cloud.glb",
+      ];
     useEffect(() => {
-        setPath(props.path);
+        setPath(props.path || './models/heatmap_tab20c_point_cloud.glb'); // Set initial path, default to first item in presetPaths
     }, [props.path]);
 
-function ModelB(props: React.ComponentPropsWithoutRef<"object3D">) {
-    const path = "./models/heatmap_point_cloud.ply";
-    const material = new THREE.MeshStandardMaterial({
-        vertexColors: true,  // Enable vertex colors
-        side: THREE.DoubleSide,  // Optional: make sure both sides of the mesh are rendered
-      });
-  
-    const geometry = useLoader(PLYLoader, path);
+    function ModelGLB(props: React.ComponentPropsWithoutRef<"object3D">) {
+        const gltf = useLoader(GLTFLoader, path);
+        
+        gltf.scene.traverse((child: THREE.Object3D) => {
+            if ((child as THREE.Points).isPoints) {
+                const points = child as THREE.Points;
+                (points.material as THREE.PointsMaterial).size = 2;
+                (points.material as THREE.PointsMaterial).sizeAttenuation = true;
+            }
+        });
 
-    
-    // (loader) => {
-    //   // Register plugin to load all materials as red basic material
-    //   loader.register((parser) => ({
-    //     name: "customPlugin",
-    //     async loadMaterial() {
-    //       return new THREE.MeshBasicMaterial({ color: "red" });
-    //     },
-    //   }));
+        return <primitive {...props} object={gltf.scene} />;
+    }
+
+    // function ModelTumorGLB(props: React.ComponentPropsWithoutRef<"object3D">) {
+    //     const gltf = useLoader(GLTFLoader, "./models/point_tumor.glb",);
+        
+    //     gltf.scene.traverse((child: THREE.Object3D) => {
+    //         if ((child as THREE.Points).isPoints) {
+    //             const points = child as THREE.Points;
+    //             (points.material as THREE.PointsMaterial).size = 2;
+    //             (points.material as THREE.PointsMaterial).sizeAttenuation = true;
+    //         }
+    //     });
+
+    //     return <primitive {...props} object={gltf.scene} />;
     // }
-    return (
-        <mesh material={material}>
-          <primitive object={geometry} attach="geometry" />
-        </mesh>
-      );
-
-//   return <primitive {...props} object={gltf.scene} /* rotation={[Math.PI / 2, 0, Math.PI / 2] } */ /* scale={100}  */ position={[10, -70, 50]} /* rotation={[0, Math.PI / 2, 0]} */ />;
-}
 
     return (
         <div>
-            <Canvas style={{ position: "absolute", inset: 0, background: "white" }}>
-                <ModelB position-x={1} />
+            <Canvas style={{ position: "absolute", inset: 0, background: "black" }} camera={{ position: [0, 2, 5], fov: 50 }}>
+                <ModelGLB position-x={1} />
+                {/* <ModelTumorGLB position-x={1} /> */}
                 <OrbitControls />
             </Canvas>
+
+            {/* Back button */}
             <button
                 style={{
                     position: "absolute",
@@ -61,6 +81,28 @@ function ModelB(props: React.ComponentPropsWithoutRef<"object3D">) {
             >
                 Back
             </button>
+
+            {/* Dropdown for selecting GLB path */}
+            <select
+                style={{
+                    position: "absolute",
+                    top: "20px",
+                    left: "100px",
+                    padding: "10px",
+                    backgroundColor: "white",
+                    border: "1px solid #ccc",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                }}
+                value={path}
+                onChange={(e) => setPath(e.target.value)}
+            >
+                {presetPaths.map((presetPath, index) => (
+                    <option key={index} value={presetPath}>
+                        {presetPath}
+                    </option>
+                ))}
+            </select>
         </div>
     );
 }
