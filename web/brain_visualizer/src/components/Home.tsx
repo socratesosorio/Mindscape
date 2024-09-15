@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import "./Home.css"
 import Model from './Model';
+import { SignOutButton } from "@clerk/clerk-react";
+import "./Auth.css";
 
 export default function Home() {
     const [isValidFile, setIsValidFile] = useState(false);
@@ -29,13 +31,17 @@ export default function Home() {
 
       return (
         <div className="image">
-            {/* <Back></Back> */}
             <div className="container">
                 <h1 className="title">MindScape VR</h1>
                 <label htmlFor="file-upload" className="uploadButton">
                     Upload file
                 </label>
-                <input id="file-upload" className="fileUpload"type="file" onChange={handleFileChange}></input>
+                <input id="file-upload" className="fileUpload" type="file" onChange={handleFileChange}></input>
+                <div>
+                    <SignOutButton>
+                        <button className="auth">Sign out</button>
+                    </SignOutButton>
+                </div>
             </div>
             {isValidFile && nerfOutputPath != '' && <Model path={nerfOutputPath}></Model>}
         </div>
