@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@clerk/clerk-react": "^5.8.2",
     "@react-three/drei": "^9.112.0",
     "@react-three/fiber": "^8.17.7",
     "@testing-library/jest-dom": "^5.17.0",
