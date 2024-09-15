@@ -13,26 +13,26 @@ export default function Model(props: any) {
 function ModelB(props: React.ComponentPropsWithoutRef<"object3D">) {
   const gltf = useLoader(
     GLTFLoader,
-    "./models/brain_model2.glb"
-    // (loader) => {
-    //   // Register plugin to load all materials as red basic material
-    //   loader.register((parser) => ({
-    //     name: "customPlugin",
-    //     async loadMaterial() {
-    //       return new THREE.MeshBasicMaterial({ color: "red" });
-    //     },
-    //   }));
-    // }
+    "./models/pointcloud3.glb",
+    (loader) => {
+      // Register plugin to load all materials as red basic material
+      loader.register((parser) => ({
+        name: "customPlugin",
+        async loadMaterial() {
+          return new THREE.MeshBasicMaterial({ color: "red" });
+        },
+      }));
+    }
   );
 
-  return <primitive {...props} object={gltf.scene} rotation={[Math.PI / 2, 0, Math.PI / 2]}/* scale={100}  position={[10, -70, 50]} rotation={[0, Math.PI / 2, 0]} *//>;
+  return <primitive {...props} object={gltf.scene} /* rotation={[Math.PI / 2, 0, Math.PI / 2] } */ /* scale={100}  */ position={[10, -70, 50]} /* rotation={[0, Math.PI / 2, 0]} */ />;
 }
 
     return (
         <div>
             <Canvas style={{ position: "absolute", inset: 0}}>
                 <ModelB position-x={1} />
-                <Environment files='background2.hdr' background />
+                <Environment preset='sunset' background={"only"} />
                 <OrbitControls />
             </Canvas>
             <button
