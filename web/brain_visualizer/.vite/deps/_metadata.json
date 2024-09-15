@@ -1,0 +1,91 @@
+{
+  "hash": "f1dce403",
+  "configHash": "d7371b9c",
+  "lockfileHash": "e28905aa",
+  "browserHash": "25dfc627",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "d52ad4ba",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "822bd22a",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "c3108dc7",
+      "needsInterop": true
+    },
+    "@clerk/clerk-react": {
+      "src": "../../node_modules/@clerk/clerk-react/dist/index.mjs",
+      "file": "@clerk_clerk-react.js",
+      "fileHash": "7100c991",
+      "needsInterop": false
+    },
+    "web-vitals": {
+      "src": "../../node_modules/web-vitals/dist/web-vitals.js",
+      "file": "web-vitals.js",
+      "fileHash": "e555ba17",
+      "needsInterop": false
+    },
+    "@react-three/fiber": {
+      "src": "../../node_modules/@react-three/fiber/dist/react-three-fiber.esm.js",
+      "file": "@react-three_fiber.js",
+      "fileHash": "ba846d7e",
+      "needsInterop": false
+    },
+    "@react-three/drei": {
+      "src": "../../node_modules/@react-three/drei/index.js",
+      "file": "@react-three_drei.js",
+      "fileHash": "f98ec6c0",
+      "needsInterop": false
+    },
+    "three": {
+      "src": "../../node_modules/three/build/three.module.js",
+      "file": "three.js",
+      "fileHash": "a29d64e0",
+      "needsInterop": false
+    },
+    "three/examples/jsm/loaders/GLTFLoader": {
+      "src": "../../node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+      "file": "three_examples_jsm_loaders_GLTFLoader.js",
+      "fileHash": "333aeaeb",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "hls-YU2LW3WX": {
+      "file": "hls-YU2LW3WX.js"
+    },
+    "vision_bundle-DIJDKRYK": {
+      "file": "vision_bundle-DIJDKRYK.js"
+    },
+    "chunk-FRJ3JFGW": {
+      "file": "chunk-FRJ3JFGW.js"
+    },
+    "chunk-Z462KDJA": {
+      "file": "chunk-Z462KDJA.js"
+    },
+    "chunk-TNTPHDQH": {
+      "file": "chunk-TNTPHDQH.js"
+    },
+    "chunk-X2I5B7MB": {
+      "file": "chunk-X2I5B7MB.js"
+    },
+    "chunk-32E4H3EV": {
+      "file": "chunk-32E4H3EV.js"
+    },
+    "chunk-UZYESENR": {
+      "file": "chunk-UZYESENR.js"
+    },
+    "chunk-G3PMV62Z": {
+      "file": "chunk-G3PMV62Z.js"
+    }
+  }
+}
