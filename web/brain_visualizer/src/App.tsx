@@ -3,14 +3,18 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import Home from "./components/Home";
 
 export default function App() {
   return (
-    <Canvas style={{ position: "absolute", inset: 0  }}>
-      <ModelB position-x={1} />
-      <Environment preset="sunset" background />
-      <OrbitControls />
-    </Canvas>
+    <div>
+      <Home></Home>
+      {/* <Canvas style={{ position: "absolute", inset: 0  }}>
+        <ModelB position-x={1} />
+        <Environment preset="sunset" background />
+        <OrbitControls />
+      </Canvas> */}
+    </div>
   );
 
 }
