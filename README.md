@@ -5,7 +5,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)](https://pytorch.org/)
 [![React](https://img.shields.io/badge/React-18+-blue.svg)](https://reactjs.org/)
 
-**MindScape** is a cutting-edge machine learning platform that transforms MRI scans into interactive 3D neural radiance fields (NeRFs) with integrated cancer detection capabilities. The system combines state-of-the-art neural rendering techniques with advanced medical image analysis to provide immersive visualization and diagnosis tools for neurological conditions.
+**MindScape** is a machine learning platform that transforms MRI scans into interactive 3D neural radiance fields (NeRFs) with integrated cancer detection capabilities. The system combines state-of-the-art neural rendering techniques with advanced medical image analysis to provide immersive visualization and diagnosis tools for neurological conditions.
 
 <img width="990" alt="Screenshot 2024-09-15 at 7 54 21 AM" src="https://github.com/user-attachments/assets/970e9311-ef02-4d86-830e-675affb6510a">
 
@@ -13,9 +13,14 @@
 
 ### 🎬 Live Demo
 
-https://github.com/user-attachments/assets/demo.mov
+<video width="800" controls>
+  <source src="demo.mov" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 *Interactive 3D brain visualization with real-time tumor detection and neural rendering*
+
+> **Note**: If the video doesn't display above, you can [download and view it directly](./demo.mov)
 
 ## 🧠 Project Overview
 
@@ -168,24 +173,6 @@ mindscape/
 3. **Memory Management**: Efficient tensor operations and caching
 4. **Batch Processing**: Parallel processing of multiple MRI slices
 
-## 📊 Experimental Results
-
-### Reconstruction Quality
-
-| Model | PSNR (dB) | SSIM | Training Time | Inference Speed |
-|-------|-----------|------|---------------|-----------------|
-| Hash-NeRF | 35.2 | 0.923 | 8.5 min | 85 ms |
-| Gaussian Splatting | 33.8 | 0.918 | 12.3 min | 45 ms |
-| Traditional NeRF | 34.1 | 0.915 | 45 min | 1.2 s |
-
-### Segmentation Performance
-
-| Tumor Size | Sensitivity | Specificity | F1-Score |
-|------------|-------------|-------------|----------|
-| >10mm | 96.3% | 97.1% | 0.967 |
-| 5-10mm | 91.7% | 95.8% | 0.937 |
-| <5mm | 78.2% | 92.4% | 0.844 |
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -313,14 +300,6 @@ If you use MindScape in your research, please cite:
   year={2024}
 }
 ```
-
-## 🙏 Acknowledgments
-
-- **Meta AI** for the Segment Anything Model
-- **NVIDIA** for InstantNGP inspiration
-- **Medical Dataset Providers** for training data
-- **Open Source Community** for foundational libraries
-
 ---
 
 *Built with ❤️ for the medical imaging community*
